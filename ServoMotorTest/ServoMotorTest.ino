@@ -1,5 +1,5 @@
 #include <Servo.h>  // include the servo library
-#define servoPin 3 //this is the pin to connect to servo signal wire
+#define servoPin 2 //this is the pin to connect to servo signal wire
 
 Servo myservo;  // create a servo object
 
