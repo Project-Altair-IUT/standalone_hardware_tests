@@ -3,7 +3,7 @@
  * Prints "hello world!"
  */
  
-#define __STM32F1__
+#define __STM32F1__ //for stm32 bluepill usb serial comms
 #include <ros.h>
 #include <std_msgs/String.h>
 
@@ -19,7 +19,7 @@ void setup() {
 
   nh.initNode();
   nh.advertise(chatter);
-  nh.getHardware()->setBaud(57600);
+  nh.getHardware()->setBaud(57600); //defining the baudrate instead of variable
 }
 
 void loop() {
