@@ -12,8 +12,13 @@
 ros::NodeHandle  nh;
 #define LOOPTIME 10
 
-#define LPWM PA_1
-#define RPWM PA_2
+#define LPWM PB_1
+#define RPWM PB_2
+
+#define feedback PA_1
+
+#define upperThreshold 900
+#define lowerThreshold 100
 
 int16_t speedVal = 1500;
 void joint_callback( const geometry_msgs::Twist& twist){
@@ -30,10 +35,15 @@ void setup() {
   nh.getHardware()->setBaud(57600);
 
   Motor jointX(LPWM,RPWM);
+
+  pinMode(feedback, INPUT);
 }
 
 void loop() {
   nh.spinOnce();
+  feedback_state = analogRead(feedback);
+  if (feedback_state > upperThreshold || feedback_state < lowerThreshold)
+    speedVal = 1500;
   jointX.rotate(speedVal);
 }
 
