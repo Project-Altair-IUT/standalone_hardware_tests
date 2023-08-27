@@ -2,12 +2,12 @@
 Enter value between -100 and 100 to control the motor...
 And Select No Line Ending
 */
-#define R_pwm 5
-#define L_pwm 6
+#define R_pwm PA1
+#define L_pwm PA2
 
 #define resolution 255
 
-int speedVal = 0;
+int speedVal = 255;
 
 void mControl(int val) {
  
