@@ -12,28 +12,29 @@
 ros::NodeHandle  nh;
 #define LOOPTIME 10
 
-#define LPWM PA_1
-#define RPWM PA_2
+#define LPWM PB_1
+#define RPWM PB_0
 
-int16_t speedVal = 1500;
-void joint_callback( const geometry_msgs::Twist& twist){
+
+int speedVal = 1500;
+void wheel_callback( const std_msgs::Int16& value){
   // expecting value to be between 1000 to 2000
-  speedVal = wheelX_val;
+  speedVal = value.data;
 }
 
-ros::Subscriber<std_msgs::Int16> sub("wheel_X", joint_callback );
+ros::Subscriber<std_msgs::Int16> sub("wheel_L", wheel_callback);
+
+Motor wheel(LPWM,RPWM);
 
 void setup() {
   nh.initNode();
   nh.subscribe(sub);
 
   nh.getHardware()->setBaud(57600);
-
-  Motor wheel_XY(LPWM,RPWM);
 }
 
 void loop() {
   nh.spinOnce();
-  wheel_XY.rotate(speedVal);
+  wheel.rotate(speedVal);
 }
 
