@@ -12,8 +12,8 @@
 ros::NodeHandle  nh;
 #define LOOPTIME 10
 
-#define LPWM PB_1
-#define RPWM PB_0
+#define LPWM PA1
+#define RPWM PA2
 
 
 int speedVal = 1500;

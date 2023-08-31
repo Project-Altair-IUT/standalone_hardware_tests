@@ -7,7 +7,7 @@ And Select No Line Ending
 
 #define resolution 255
 
-int speedVal = 255;
+int speedVal = 100;
 
 void mControl(int val) {
  
@@ -29,7 +29,7 @@ void setup() {
   pinMode(L_pwm, OUTPUT);
   pinMode(R_pwm, OUTPUT);
 
-  Serial.begin(115200);
+  Serial.begin(57600);
 
   Serial.println("Enter value between -100 and 100 to control the motor...");
   Serial.println("And Select No Line Ending");
