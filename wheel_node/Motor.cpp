@@ -16,7 +16,7 @@ void Motor::rotate(int value) {
     analogWrite(pwm_f, out);
   }
   else {
-    int out = map(value, 1000, 1500, 0, 255);
+    int out = map(value, 1500, 1000, 0, 255);
     analogWrite(pwm_f, 0);
     delay(1); //OCD delay for making sure h bridge does not fry
     analogWrite(pwm_b, out);

@@ -1,6 +1,3 @@
-// #define USE_USBCON
-// #define USE_USB
-// #define _SAM3XA_
 #define __STM32F1__ //for stm32 bluepill usb serial comms
 
 #include <ros.h>
